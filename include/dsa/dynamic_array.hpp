@@ -25,6 +25,7 @@ public:
     T& operator[](size_t index);
     void pop_back();
     size_t size() const;
+    bool empty() const;
 
 
 };
@@ -79,4 +80,10 @@ template <typename T>
 inline size_t MyDynamicArray<T>::size() const
 {
     return Size;
+}
+
+template <typename T>
+inline bool MyDynamicArray<T>::empty() const
+{
+    return Size == 0;
 }
