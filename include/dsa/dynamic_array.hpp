@@ -1,15 +1,21 @@
-#include <iostream>
 #pragma once
-
-using namespace std;
+#include <iostream>
+#include <cstddef>
 
 template <typename T>
 
-class MyClass {
+class MyDynamicArray {
 private:
-    int size;
-    int capacity;
-    
+    size_t size;
+    size_t capacity;
+    T* myArray;
 public:
+    MyDynamicArray() : size(0), capacity(0), myArray(nullptr) {}
+
+    MyDynamicArray(size_t capacit) : size(0), capacity(capacit){
+        myArray = new T[capacit];
+    }
+
+    // Methods
 
 };
