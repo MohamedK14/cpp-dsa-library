@@ -6,13 +6,13 @@ template <typename T>
 
 class MyDynamicArray {
 private:
-    size_t size;
-    size_t capacity;
+    size_t Size;
+    size_t Capacity;
     T* myArray;
 public:
-    MyDynamicArray() : size(0), capacity(0), myArray(nullptr) {}
+    MyDynamicArray() : Size(0), Capacity(0), myArray(nullptr) {}
 
-    MyDynamicArray(size_t capacit) : size(0), capacity(capacit){
+    MyDynamicArray(size_t capacit) : Size(0), Capacity(capacit){
         myArray = new T[capacit];
     }
 
@@ -34,24 +34,24 @@ public:
 template <typename T>
 inline void MyDynamicArray<T>::push_back(const T &value)
 {
-    if(size != capacity){
-        myArray[size++] = value;
+    if(Size != Capacity){
+        myArray[Size++] = value;
         return;
     }
 
     T* temp = myArray;
 
-    capacity = (capacity == 0) ? 1 :  capacity * 2;
+    Capacity = (Capacity == 0) ? 1 :  Capacity * 2;
 
-    myArray = new T[capacity];
+    myArray = new T[Capacity];
     // myArray = temp;
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0; i < Size; i++)
     {
         myArray[i] = temp[i];
     }
     
     delete [] temp;
-    myArray[size++] = value;
+    myArray[Size++] = value;
 }
 
 
@@ -59,7 +59,7 @@ inline void MyDynamicArray<T>::push_back(const T &value)
 template <typename T>
 inline T &MyDynamicArray<T>::operator[](size_t index)
 {
-    if(index >= size){
+    if(index >= Size){
         throw std::out_of_range("Index out of bounds!");
     }
 
