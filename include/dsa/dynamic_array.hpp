@@ -23,7 +23,8 @@ public:
     // Methods
     void push_back(const T& value);
     T& operator[](size_t index);
-
+    void pop_back();
+    size_t size() const;
 
 
 };
@@ -64,4 +65,18 @@ inline T &MyDynamicArray<T>::operator[](size_t index)
     }
 
     return myArray[index];
+}
+
+template <typename T>
+inline void MyDynamicArray<T>::pop_back()
+{
+
+    if(Size == 0) return;
+    Size--;
+}
+
+template <typename T>
+inline size_t MyDynamicArray<T>::size() const
+{
+    return Size;
 }
