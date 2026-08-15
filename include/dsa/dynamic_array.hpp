@@ -20,7 +20,7 @@ public:
         delete[] myArray;
     }
 
-    
+
     // Methods
 
 };
