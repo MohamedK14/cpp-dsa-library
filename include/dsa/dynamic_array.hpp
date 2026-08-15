@@ -16,6 +16,11 @@ public:
         myArray = new T[capacit];
     }
 
+    ~MyDynamicArray() {
+        delete[] myArray;
+    }
+
+    
     // Methods
 
 };
