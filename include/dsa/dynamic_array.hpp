@@ -4,46 +4,48 @@
 
 template <typename T>
 
-class MyDynamicArray {
+class MyDynamicArray
+{
 private:
     size_t Size;
     size_t Capacity;
-    T* myArray;
+    T *myArray;
+
 public:
     MyDynamicArray() : Size(0), Capacity(0), myArray(nullptr) {}
 
-    MyDynamicArray(size_t capacit) : Size(0), Capacity(capacit){
+    MyDynamicArray(size_t capacit) : Size(0), Capacity(capacit)
+    {
         myArray = new T[capacit];
     }
 
-    ~MyDynamicArray() {
+    ~MyDynamicArray()
+    {
         delete[] myArray;
     }
 
     // Methods
-    void push_back(const T& value);
-    T& operator[](size_t index);
+    T &operator[](size_t index);
+    MyDynamicArray(const MyDynamicArray &obj);    
+    
+    void push_back(const T &value);
     void pop_back();
     size_t size() const;
     bool empty() const;
-
-
 };
-
-
-
 
 template <typename T>
 inline void MyDynamicArray<T>::push_back(const T &value)
 {
-    if(Size != Capacity){
+    if (Size != Capacity)
+    {
         myArray[Size++] = value;
         return;
     }
 
-    T* temp = myArray;
+    T *temp = myArray;
 
-    Capacity = (Capacity == 0) ? 1 :  Capacity * 2;
+    Capacity = (Capacity == 0) ? 1 : Capacity * 2;
 
     myArray = new T[Capacity];
     // myArray = temp;
@@ -51,28 +53,30 @@ inline void MyDynamicArray<T>::push_back(const T &value)
     {
         myArray[i] = temp[i];
     }
-    
-    delete [] temp;
+
+    delete[] temp;
     myArray[Size++] = value;
 }
-
-
 
 template <typename T>
 inline T &MyDynamicArray<T>::operator[](size_t index)
 {
-    if(index >= Size){
+    if (index >= Size)
+    {
         throw std::out_of_range("Index out of bounds!");
     }
 
     return myArray[index];
 }
 
+
+
 template <typename T>
 inline void MyDynamicArray<T>::pop_back()
 {
 
-    if(Size == 0) return;
+    if (Size == 0)
+        return;
     Size--;
 }
 
@@ -86,4 +90,14 @@ template <typename T>
 inline bool MyDynamicArray<T>::empty() const
 {
     return Size == 0;
+}
+
+
+template <typename T>
+inline MyDynamicArray<T>::MyDynamicArray(const MyDynamicArray &obj)
+    : Size(obj.Size), Capacity(obj.Capacity), myArray(new T[obj.Capacity])
+{
+    for (size_t i = 0; i < Size; i++) {
+        myArray[i] = obj.myArray[i];
+    }
 }
