@@ -31,10 +31,13 @@ public:
     
     void push_back(const T &value);
     void pop_back();
-    size_t size() const;
-    bool empty() const;
+    size_t size() const {return Size;};
+    bool empty() const {return Size == 0;};
     T& front() const;
     T& back() const;
+
+    T* begin() const {return myArray;};
+    T* end() const {return myArray + Size;};
 };
 
 
@@ -44,6 +47,10 @@ public:
 //##############################################
 //##############################################
 //##############################################
+
+
+
+
 
 template <typename T>
 inline void MyDynamicArray<T>::push_back(const T &value)
@@ -87,18 +94,6 @@ inline void MyDynamicArray<T>::pop_back()
     if (Size == 0)
         return;
     Size--;
-}
-
-template <typename T>
-inline size_t MyDynamicArray<T>::size() const
-{
-    return Size;
-}
-
-template <typename T>
-inline bool MyDynamicArray<T>::empty() const
-{
-    return Size == 0;
 }
 
 template <typename T>
