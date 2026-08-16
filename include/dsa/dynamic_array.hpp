@@ -26,6 +26,7 @@ public:
 
     // Methods
     T &operator[](size_t index);
+    MyDynamicArray& operator=(const MyDynamicArray &obj);
     MyDynamicArray(const MyDynamicArray &obj);    
     
     void push_back(const T &value);
@@ -121,4 +122,24 @@ inline MyDynamicArray<T>::MyDynamicArray(const MyDynamicArray &obj)
     for (size_t i = 0; i < Size; i++) {
         myArray[i] = obj.myArray[i];
     }
+}
+
+
+
+template <typename T>
+inline MyDynamicArray<T> &MyDynamicArray<T>::operator=(const MyDynamicArray &obj)
+{
+    if(this == &obj) return *this;
+    delete[] myArray;
+
+    Size = obj.Size;
+    Capacity = obj.Capacity;
+    myArray = new T[Capacity];
+
+    for (size_t i = 0; i < Size; i++)
+    {
+        myArray[i] = obj.myArray[i];
+    }
+    
+    return *this;
 }
