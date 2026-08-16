@@ -32,7 +32,17 @@ public:
     void pop_back();
     size_t size() const;
     bool empty() const;
+    T& front() const;
+    T& back() const;
 };
+
+
+
+
+
+//##############################################
+//##############################################
+//##############################################
 
 template <typename T>
 inline void MyDynamicArray<T>::push_back(const T &value)
@@ -69,8 +79,6 @@ inline T &MyDynamicArray<T>::operator[](size_t index)
     return myArray[index];
 }
 
-
-
 template <typename T>
 inline void MyDynamicArray<T>::pop_back()
 {
@@ -92,6 +100,19 @@ inline bool MyDynamicArray<T>::empty() const
     return Size == 0;
 }
 
+template <typename T>
+inline T &MyDynamicArray<T>::front() const
+{
+    if(Size == 0) throw std::out_of_range("front() on empty array");
+    return myArray[0];
+}
+
+template <typename T>
+inline T &MyDynamicArray<T>::back() const
+{
+    if(Size == 0) throw std::out_of_range("back() on empty array");
+    return myArray[Size -1];
+}
 
 template <typename T>
 inline MyDynamicArray<T>::MyDynamicArray(const MyDynamicArray &obj)
