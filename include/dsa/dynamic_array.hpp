@@ -31,13 +31,13 @@ public:
     
     void push_back(const T &value);
     void pop_back();
-    size_t size() const {return Size;};
-    bool empty() const {return Size == 0;};
+    size_t size() const {return Size;}
+    bool empty() const {return Size == 0;}
     T& front() const;
     T& back() const;
 
-    T* begin() const {return myArray;};
-    T* end() const {return myArray + Size;};
+    T* begin() const {return myArray;}
+    T* end() const {return myArray + Size;}
 };
 
 
