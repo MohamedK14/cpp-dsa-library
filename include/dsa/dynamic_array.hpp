@@ -85,8 +85,7 @@ template <typename T>
 inline void MyDynamicArray<T>::pop_back()
 {
 
-    if (Size == 0)
-        return;
+    if (Size == 0) return;
     Size--;
 }
 
