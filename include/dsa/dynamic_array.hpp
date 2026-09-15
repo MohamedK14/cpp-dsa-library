@@ -2,8 +2,11 @@
 #include <iostream>
 #include <cstddef>
 
-template <typename T>
 
+namespace dsa {
+
+    
+template <typename T>
 class MyDynamicArray
 {
 private:
@@ -40,16 +43,7 @@ public:
     T* end() const {return myArray + Size;}
 };
 
-
-
-
-
-//##############################################
-//##############################################
-//##############################################
-
-
-
+//********************************************************************** */
 
 
 template <typename T>
@@ -137,4 +131,6 @@ inline MyDynamicArray<T> &MyDynamicArray<T>::operator=(const MyDynamicArray &obj
     }
     
     return *this;
+}
+
 }
