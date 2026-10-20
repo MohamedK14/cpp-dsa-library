@@ -1,4 +1,6 @@
 #pragma once
+
+#include <stdexcept>
 #include <iostream>
 #include <cstddef>
 
@@ -36,6 +38,7 @@ public:
     void pop_back();
     size_t size() const {return Size;}
     bool empty() const {return Size == 0;}
+    size_t capacity() const {return Capacity;}
     T& front() const;
     T& back() const;
 
